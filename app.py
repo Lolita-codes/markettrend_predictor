@@ -21,7 +21,8 @@ def run_pipeline(ticker_symbol, start, end):
     if raw_data is None:
         return None, None
     
-    engineered_data = prepare_features(raw_data)
+    # Notice we are now passing 'start' into prepare_features
+    engineered_data = prepare_features(raw_data, start)
     final_data, model_accuracy = train_and_predict(engineered_data)
     
     return final_data, model_accuracy
